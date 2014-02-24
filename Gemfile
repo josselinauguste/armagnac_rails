@@ -29,6 +29,8 @@ gem 'sidekiq'
 gem 'whenever', :require => false
 gem 'feedzirra'
 
+gem 'exception_notification'
+
 group :development, :test do
   gem 'rake'
   gem 'minitest'

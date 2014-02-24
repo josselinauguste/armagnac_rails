@@ -47,6 +47,9 @@ GEM
     connection_pool (1.2.0)
     curb (0.8.5)
     erubis (2.7.0)
+    exception_notification (4.0.1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     execjs (2.0.2)
     feedzirra (0.7.1)
       curb (~> 0.8.1)
@@ -183,6 +186,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  exception_notification
   feedzirra
   guard-bundler
   guard-minitest
