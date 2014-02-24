@@ -15,7 +15,5 @@ class SendDigestsWorkerTest < ActiveSupport::TestCase
     assert_difference 'ActionMailer::Base.deliveries.size' do
       SendDigestsWorker.new.perform(feed.id)
     end
-
-    assert_operator feed.reload.fetched_at, :>, 5.seconds.ago
   end
 end
