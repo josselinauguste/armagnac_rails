@@ -9,7 +9,7 @@ class DigestMailerTest < ActionMailer::TestCase
     email = nil
 
     assert_difference 'ActionMailer::Base.deliveries.size' do
-      email = DigestMailer.digest_email(feed.title, feed.entries, to).deliver
+      email = DigestMailer.digest_email(feed.title, feed.new_entries, to).deliver
     end
 
     assert_equal [to], email.to

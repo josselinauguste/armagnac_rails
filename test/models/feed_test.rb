@@ -6,7 +6,7 @@ class FeedTest < ActiveSupport::TestCase
 
     feed.fetch
 
-    assert_equal 3, feed.entries.length
+    assert_equal 3, feed.new_entries.length
     assert_equal 'Sous les briques, le soleil', feed.title
   end
 
@@ -16,8 +16,8 @@ class FeedTest < ActiveSupport::TestCase
 
     feed.fetch
 
-    assert_equal 1, feed.entries.length
-    assert_equal 'Going brompton', feed.entries.first.title
+    assert_equal 1, feed.new_entries.length
+    assert_equal 'Going brompton', feed.new_entries.first.title
     assert_equal 'Sous les briques, le soleil', feed.title
   end
 end
