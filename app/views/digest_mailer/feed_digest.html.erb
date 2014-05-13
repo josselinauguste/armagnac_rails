@@ -4,12 +4,13 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
   </head>
   <body>
-      <h1><%= @title %></h1>
+      <h1 style="font-weight: normal; font-family: 'helvetica neue', Helvetica;"><%= @title %></h1>
       <% @entries.each do |entry| %>
-        <h2 style="font-weight: normal; font-family: 'Helvetica Neue', Helvetica;"><%= entry.title %></h2>
+        <h2 style="font-weight: normal; font-family: 'helvetica neue', Helvetica;"><%= entry.title %> <small><%= link_to '>See the post', entry.url %></small></h2>
         <p style="font-family: Georgia, 'Lucida Grande', 'Lucida Sans';"><%= entry.summary || entry.content %></p>
-        <p><%= link_to 'See the post', entry.url %></p>
       <% end %>
-      <small style="text-align: center; margin-top: 2em;">armagnac.io</small>
+      <footer style="text-align: center; margin-top: 2em;">
+        <small>armagnac.io</small>
+      </footer>
   </body>
 </html>
