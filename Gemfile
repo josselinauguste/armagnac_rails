@@ -44,6 +44,10 @@ group :development, :test do
   gem 'terminal-notifier-guard'
 end
 
+group :development do
+  gem 'meta_request'
+end
+
 group :production do
   gem 'pg'
 end

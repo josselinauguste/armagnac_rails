@@ -30,6 +30,7 @@ GEM
     arel (5.0.0)
     atomic (1.1.14)
     builder (3.2.2)
+    callsite (0.0.11)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     celluloid-io (0.15.0)
@@ -89,6 +90,10 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta_request (0.3.0)
+      callsite
+      rack-contrib
+      railties
     metaclass (0.0.4)
     method_source (0.8.2)
     mime-types (1.25.1)
@@ -107,6 +112,8 @@ GEM
       method_source (~> 0.8)
       slop (~> 3.4)
     rack (1.5.2)
+    rack-contrib (1.1.0)
+      rack (>= 0.9.1)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.1.0.rc1)
@@ -192,6 +199,7 @@ DEPENDENCIES
   guard-minitest
   jbuilder (~> 2.0)
   jquery-rails
+  meta_request
   minitest
   mocha
   pg
