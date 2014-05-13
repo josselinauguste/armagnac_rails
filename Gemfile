@@ -29,6 +29,8 @@ gem 'sidekiq'
 gem 'whenever', :require => false
 gem 'feedzirra'
 
+gem 'truncate_html'
+
 gem 'exception_notification'
 
 group :development, :test do

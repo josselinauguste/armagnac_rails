@@ -1,4 +1,6 @@
 class DigestMailer < ActionMailer::Base
+	add_template_helper(TruncateHtmlHelper)
+
   default from: "bouilleurdecru@armagnac.io"
 
   def feed_digest(title, entries, to)

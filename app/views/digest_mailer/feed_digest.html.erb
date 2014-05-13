@@ -6,8 +6,13 @@
   <body>
       <h1 style="font-weight: normal; font-family: 'helvetica neue', Helvetica;"><%= @title %></h1>
       <% @entries.each do |entry| %>
-        <h2 style="font-weight: normal; font-family: 'helvetica neue', Helvetica;"><%= entry.title %> <small><%= link_to '>See the post', entry.url %></small></h2>
-        <p style="font-family: Georgia, 'Lucida Grande', 'Lucida Sans';"><%= entry.summary || entry.content %></p>
+        <h2 style="font-weight: normal; font-family: 'helvetica neue', Helvetica;"><%= entry.title %></h2>
+        <p style="font-family: Georgia, 'Lucida Grande', 'Lucida Sans';">
+          <%= entry.summary || truncate_html(entry.content, length: 300, omission: '&hellip;') %>
+          <%= link_to entry.url, target: '_blank' do %>
+          Read more&hellip;
+          <% end %>
+        </p>
       <% end %>
       <footer style="text-align: center; margin-top: 2em;">
         <small>armagnac.io</small>
