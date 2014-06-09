@@ -30,6 +30,7 @@ gem 'whenever', :require => false
 gem 'feedzirra'
 
 gem 'truncate_html'
+gem 'roadie', '~> 2.4.3'
 
 gem 'exception_notification'
 
