@@ -2,8 +2,28 @@ require 'test_helper'
 
 class DigestsControllerTest < ActionController::TestCase
   test 'send digests' do
-    get :process_feeds
+    time = Job.last.updated_at
+
+    assert_difference 'ActionMailer::Base.deliveries.size' do
+      Delorean.time_travel_to DateTime.parse('2014-06-13 20:00:00') do
+        get :run
+      end
+    end
 
     assert_response :success
+    assert_operator time, :<, Job.last.reload.updated_at
+  end
+
+  test 'do not send digests if out of schedule' do
+    time = Job.last.updated_at
+
+    assert_difference 'ActionMailer::Base.deliveries.size', 0 do
+      Delorean.time_travel_to DateTime.parse('2014-06-12 20:00:00') do
+        get :run
+      end
+    end
+
+    assert_response :success
+    assert_equal time, Job.last.reload.updated_at
   end
 end

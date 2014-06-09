@@ -37,6 +37,7 @@ group :development, :test do
   gem 'rake'
   gem 'minitest'
   gem 'mocha', require: false
+  gem 'delorean'
 
   gem 'sqlite3'
   
