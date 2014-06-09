@@ -6,12 +6,4 @@ class SendDigestsWorkerTest < ActiveSupport::TestCase
       SendDigestsWorker.send_digests
     end
   end
-
-  test 'perform for a feed' do
-    feed = feeds(:one)
-
-    assert_difference 'ActionMailer::Base.deliveries.size' do
-      SendDigestsWorker.new.perform(feed.id)
-    end
-  end
 end

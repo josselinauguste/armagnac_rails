@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  get 'work', controller: 'digests', action: 'process_feeds'
+  get 'digests/run', controller: 'digests', action: 'run'
 end
