@@ -2,7 +2,7 @@ class DigestsController < ApplicationController
   def run
     job = Job.last
     if job
-      if Time.now - job.updated_at > 1 && Date.today.wday == 5 && DateTime.now > DateTime.now.change({:hour => 20})
+      if job.updated_at.to_date < Date.today && Date.today.wday == 5 && DateTime.now > DateTime.now.change({:hour => 20})
         SendDigestsWorker.send_digests
         job.touch
       end

@@ -26,4 +26,18 @@ class DigestsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal time, Job.last.reload.updated_at
   end
+
+  test 'do not send digests twice on the same day' do
+    time = DateTime.parse('2014-06-12 20:00:00')
+    Job.last.update_attribute(:updated_at, time.change({hours: 8}))
+
+    assert_difference 'ActionMailer::Base.deliveries.size', 0 do
+      Delorean.time_travel_to time do
+        get :run
+      end
+    end
+
+    assert_response :success
+    assert_equal time, Job.last.reload.updated_at
+  end
 end
