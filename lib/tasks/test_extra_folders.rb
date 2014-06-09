@@ -12,8 +12,16 @@ namespace :test do
    t.pattern = 'test/services/**/*_test.rb'
    t.verbose = true
   end
+
+  desc "Test workers source"
+  Rake::TestTask.new(:workers) do |t|
+   t.libs << "test"
+   t.pattern = 'test/workers/**/*_test.rb'
+   t.verbose = true
+  end
 end
  
 test_task = Rake::Task[:test]
 test_task.enhance { Rake::Task["test:lib"].invoke }
 test_task.enhance { Rake::Task["test:services"].invoke }
+test_task.enhance { Rake::Task["test:workers"].invoke }
