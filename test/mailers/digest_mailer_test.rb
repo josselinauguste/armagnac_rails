@@ -1,15 +1,28 @@
 require 'test_helper'
 
 class DigestMailerTest < ActionMailer::TestCase
+
+  class FakeEntry
+    def title
+      'Salut'
+    end
+
+    def url
+      'http://www.test.com/salut'
+    end
+
+    def summary
+      'salut les gars'
+    end
+  end
   
   test 'send digest for feed' do
     to = 'jauguste@iblop.net'
-    feed = feeds(:one)
-    feed.fetch
     email = nil
+    entries = [FakeEntry.new]
 
     assert_difference 'ActionMailer::Base.deliveries.size' do
-      email = DigestMailer.feed_digest(feed.title, feed.new_entries, to).deliver
+      email = DigestMailer.feed_digest('Sous les briques, le soleil', entries, to).deliver
     end
 
     assert_equal [to], email.to

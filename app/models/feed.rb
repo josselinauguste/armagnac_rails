@@ -2,15 +2,6 @@ require 'feedzirra'
 
 class Feed < ActiveRecord::Base
 
-  attr_reader :title
-  attr_reader :new_entries
-
-  def fetch
-    feed = Feedzirra::Feed.fetch_and_parse(url)
-    @title = feed.title
-    @new_entries = feed.entries
-    if fetched_at
-      @new_entries = @new_entries.take_while { |e| e.published > fetched_at }
-    end
-  end
+  validates_presence_of :url
+  
 end
