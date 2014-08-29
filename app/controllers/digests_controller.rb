@@ -1,5 +1,5 @@
 class DigestsController < ApplicationController
-  def run
+  def watch
     job = Job.last
     if job
       if job.updated_at.to_date < Date.today && Date.today.wday == 5 && DateTime.now > DateTime.now.change({:hour => 12})

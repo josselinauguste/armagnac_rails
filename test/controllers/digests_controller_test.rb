@@ -6,7 +6,7 @@ class DigestsControllerTest < ActionController::TestCase
 
     assert_difference 'ActionMailer::Base.deliveries.size' do
       Delorean.time_travel_to DateTime.parse('2014-06-13 20:00:00') do
-        get :run
+        get :watch
       end
     end
 
@@ -19,7 +19,7 @@ class DigestsControllerTest < ActionController::TestCase
 
     assert_difference 'ActionMailer::Base.deliveries.size', 0 do
       Delorean.time_travel_to DateTime.parse('2014-06-12 20:00:00') do
-        get :run
+        get :watch
       end
     end
 
@@ -33,7 +33,7 @@ class DigestsControllerTest < ActionController::TestCase
 
     assert_difference 'ActionMailer::Base.deliveries.size', 0 do
       Delorean.time_travel_to time do
-        get :run
+        get :watch
       end
     end
 
