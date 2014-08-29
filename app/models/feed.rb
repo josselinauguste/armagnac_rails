@@ -10,7 +10,7 @@ class Feed < ActiveRecord::Base
     @title = feed.title
     @new_entries = feed.entries
     if fetched_at
-      @new_entries = @new_entries.select { |e| e.published > fetched_at }
+      @new_entries = @new_entries.take_while { |e| e.published > fetched_at }
     end
   end
 end
