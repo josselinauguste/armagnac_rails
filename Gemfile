@@ -32,6 +32,7 @@ gem 'truncate_html'
 gem 'roadie', '~> 2.4.3'
 
 gem 'exception_notification'
+gem 'rails_12factor'
 
 group :development, :test do
   gem 'rake'
@@ -53,6 +54,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'unicorn'
 end
 
 # Use ActiveModel has_secure_password
