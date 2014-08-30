@@ -27,6 +27,6 @@ class DigestMailerTest < ActionMailer::TestCase
 
     assert_equal [to], email.to
     assert_equal ['bouilleurdecru@armagnac.io'], email.from
-    assert_equal "Your digest about 'Sous les briques, le soleil'", email.subject
+    assert_equal "'Sous les briques, le soleil' digested", email.subject
   end
 end

@@ -6,6 +6,6 @@ class DigestMailer < ActionMailer::Base
   def feed_digest(title, entries, to)
     @title = title
     @entries = entries
-    mail(to: to, subject: "Your digest about '#{title}'")
+    mail(to: to, subject: "'#{title}' digested")
   end
 end
