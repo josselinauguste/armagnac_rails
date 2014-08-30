@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140609200159) do
+ActiveRecord::Schema.define(version: 20140829203558) do
 
   create_table "feeds", force: true do |t|
-    t.string   "url",        null: false
+    t.string   "source",                     null: false
     t.datetime "fetched_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "format",     default: "rss", null: false
   end
 
   create_table "jobs", force: true do |t|

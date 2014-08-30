@@ -6,16 +6,17 @@ class FetchFeedServiceTest < ActiveSupport::TestCase
   end
 
   test 'get new entries returns all entries if not yet fetched' do
-    feed = feeds(:one)
+    feed = feeds(:rss)
 
     title, new_entries = @service.fetch_new(feed)
 
     assert_equal 3, new_entries.length
     assert_equal 'Sous les briques, le soleil', title
+    assert_operator feed.reload.fetched_at, :>, 5.seconds.ago
   end
 
   test 'get new entries only if already fetched' do
-    feed = feeds(:one)
+    feed = feeds(:rss)
     feed.update_attribute(:fetched_at, DateTime.parse('2013-07-22 22:30'))
 
     title, new_entries = @service.fetch_new(feed)
@@ -26,26 +27,7 @@ class FetchFeedServiceTest < ActiveSupport::TestCase
   end
 
   test 'get empty array if no new entry' do
-    feed = feeds(:one)
-    feed.update_attribute(:fetched_at, DateTime.now)
-
-    title, new_entries = @service.fetch_new(feed)
-
-    assert_equal 0, new_entries.length
-  end
-
-  test 'get title & entries for a feed' do
-    feed = feeds(:one)
-
-    title, new_entries = @service.fetch_new(feed)
-
-    assert_equal 'Sous les briques, le soleil', title
-    assert_equal 3, new_entries.length
-    assert_operator feed.reload.fetched_at, :>, 5.seconds.ago
-  end
-
-  test 'returns empty for feed without new entry' do
-    feed = feeds(:one)
+    feed = feeds(:rss)
     feed.update_attribute(:fetched_at, DateTime.now)
 
     title, new_entries = @service.fetch_new(feed)

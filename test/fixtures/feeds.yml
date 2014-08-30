@@ -1,4 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  url: file://<%= File.join(Rails.root, 'test', 'feed.xml') %>
+rss:
+  source: file://<%= File.join(Rails.root, 'test', 'feed.xml') %>
+  format: 'rss'

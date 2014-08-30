@@ -27,6 +27,7 @@ gem 'spring',        group: :development
 
 gem 'whenever', :require => false
 gem 'feedzirra'
+gem 'httparty', '~> 0.13.1'
 
 gem 'truncate_html'
 gem 'roadie', '~> 2.4.3'
@@ -37,7 +38,7 @@ gem 'rails_12factor'
 group :development, :test do
   gem 'rake'
   gem 'minitest'
-  gem 'mocha', require: false
+  gem 'webmock'
   gem 'delorean'
 
   gem 'sqlite3'
