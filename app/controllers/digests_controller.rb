@@ -2,7 +2,7 @@ class DigestsController < ApplicationController
   def watch
     job = Job.last
     if job
-      if job.updated_at.to_date < Date.today && Date.today.wday == 5 && DateTime.now > DateTime.now.change({:hour => 12})
+      if params['force'].present? || job.ready?
         SendDigestsWorker.send_digests
         job.touch
       end
