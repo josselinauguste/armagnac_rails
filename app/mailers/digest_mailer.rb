@@ -1,5 +1,6 @@
 class DigestMailer < ActionMailer::Base
-	add_template_helper(TruncateHtmlHelper)
+  add_template_helper(TruncateHtmlHelper)
+	add_template_helper(DigestsHelper)
 
   default from: "bouilleurdecru@armagnac.io"
 

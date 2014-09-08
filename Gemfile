@@ -37,9 +37,6 @@ gem 'rails_12factor'
 
 group :development, :test do
   gem 'rake'
-  gem 'minitest'
-  gem 'webmock'
-  gem 'delorean'
 
   gem 'sqlite3'
   
@@ -51,6 +48,13 @@ end
 
 group :development do
   gem 'meta_request'
+  gem 'letter_opener'
+end
+
+group :test do
+  gem 'minitest'
+  gem 'webmock'
+  gem 'delorean'
 end
 
 group :production do

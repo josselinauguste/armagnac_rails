@@ -51,10 +51,9 @@
   <body>
       <h1><%= @title %></h1>
       <% @entries.each do |entry| %>
-        <h2><%= link_to entry.title, entry.url, target: '_blank' %></h2>
-        <p>
-          <%= entry.summary || truncate_html(CGI.unescapeHTML(entry.content), length: 300, omission: '&hellip;') %>
-        </p>
+        <h2><%= link_to entry_title(entry), entry.url, target: '_blank' %></h2>
+        <%= content_tag :p, entry_extract(entry) unless blank_entry?(entry) %>
+        <hr>
       <% end %>
       <footer>
         <hr>
