@@ -3,7 +3,9 @@ class SendDigestsWorker
     service = FetchFeedService.new
     Feed.all.each do |feed|
       title, new_entries = service.fetch_new(feed)
-      DigestMailer.feed_digest(title, new_entries, 'jauguste@iblop.net').deliver
+      unless new_entries.empty?
+        DigestMailer.feed_digest(title, new_entries, 'jauguste@iblop.net').deliver
+      end
     end
   end
 end
