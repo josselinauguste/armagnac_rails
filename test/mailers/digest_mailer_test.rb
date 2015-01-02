@@ -14,6 +14,10 @@ class DigestMailerTest < ActionMailer::TestCase
     def summary
       'salut les gars'
     end
+
+    def content
+      'salut les gars'
+    end
   end
   
   test 'send digest for feed' do

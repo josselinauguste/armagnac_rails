@@ -8,7 +8,7 @@ module DigestsHelper
   end
 
   def entry_extract(entry)
-    truncate_html(CGI.unescapeHTML(raw_content entry), length: 300, omission: '&hellip;')
+    truncate_html(CGI.unescapeHTML(raw_content entry), length: 1024, omission: '&hellip;')
   end
 
   def blank_entry?(entry)
@@ -17,6 +17,6 @@ module DigestsHelper
 
   private
   def raw_content(entry)
-    entry.summary || entry.content || ''
+    entry.content || entry.summary || ''
   end
 end
