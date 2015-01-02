@@ -1,4 +1,4 @@
-require 'feedzirra'
+require 'feedjira'
 
 class Feed < ActiveRecord::Base
 

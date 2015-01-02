@@ -1,6 +1,6 @@
 class FetchFeedService
   def fetch_new(feed)
-    fetched_feed = Feedzirra::Feed.fetch_and_parse(feed.url)
+    fetched_feed = Feedjira::Feed.fetch_and_parse(feed.url)
     entries = fetched_feed.entries
     if feed.fetched_at
       entries = entries.take_while { |e| e.published > feed.fetched_at }
